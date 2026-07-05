@@ -1,0 +1,7 @@
+/* starlight-kb-theme 主样式入口
+   导入所有子样式模块，使用方只需在 customCss 中引用此文件 */
+
+@import './typography.css';
+@import './tables-code.css';
+@import './mermaid.css';
+@import './katex.css';

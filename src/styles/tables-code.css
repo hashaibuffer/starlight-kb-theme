@@ -1,0 +1,43 @@
+/* ========== 表格与代码块样式 ========== */
+
+.sl-markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-size: 0.9em;
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.sl-markdown-content thead th {
+  background-color: color-mix(in srgb, var(--sl-color-white) 8%, transparent);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--sl-color-hairline-light);
+}
+
+.sl-markdown-content tbody td {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+.sl-markdown-content tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--sl-color-white) 4%, transparent);
+}
+
+.sl-markdown-content tbody tr:hover {
+  background-color: color-mix(in srgb, var(--sl-color-accent) 8%, transparent);
+}
+
+.sl-markdown-content pre {
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.sl-markdown-content :not(pre) > code {
+  border-radius: 0.25rem;
+  padding: 0.15rem 0.35rem;
+  font-size: 0.875em;
+}

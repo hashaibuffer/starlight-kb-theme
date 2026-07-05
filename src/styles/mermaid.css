@@ -1,0 +1,198 @@
+/* ========== Mermaid 图表交互样式 ========== */
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+pre.mermaid[data-enhanced] {
+  cursor: default !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  animation: none !important;
+}
+
+.mermaid-wrapper {
+  position: relative;
+  cursor: zoom-in;
+  display: block;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.mermaid-wrapper svg {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.mermaid-expand-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--sl-color-gray-2) 20%, transparent);
+  color: var(--sl-color-gray-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+  z-index: 2;
+}
+
+.mermaid-wrapper:hover .mermaid-expand-btn {
+  opacity: 1;
+}
+
+.mermaid-expand-btn:hover {
+  background: color-mix(in srgb, var(--sl-color-gray-2) 35%, transparent);
+}
+
+/* ========== 弹层 overlay ========== */
+.mermaid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mermaid-fade-in 0.2s ease-out;
+}
+
+@keyframes mermaid-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mermaid-zoom-stage {
+  position: relative;
+  max-width: 92vw;
+  max-height: 86vh;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mermaid-zoom-stage:active {
+  cursor: grabbing;
+}
+
+/* 可缩放容器：亮色白底、暗色灰底 */
+.mermaid-zoom-container {
+  background: var(--mermaid-zoom-bg, #fff);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transform-origin: center center;
+  transition: transform 0.05s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 亮色模式：白底 */
+[data-theme="light"] .mermaid-zoom-container {
+  --mermaid-zoom-bg: #ffffff;
+}
+
+/* 暗色模式：灰底 */
+[data-theme="dark"] .mermaid-zoom-container {
+  --mermaid-zoom-bg: #2a2a2e;
+}
+
+.mermaid-zoom-container svg {
+  width: 90vw;
+  max-width: 90vw;
+  max-height: 80vh;
+  height: auto;
+}
+
+.mermaid-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background 0.2s;
+}
+
+.mermaid-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mermaid-toolbar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.mermaid-tool {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.mermaid-tool:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.mermaid-zoom-pct {
+  color: #fff;
+  font-size: 13px;
+  min-width: 52px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 768px) {
+  .mermaid-zoom-container {
+    padding: 0.75rem;
+  }
+
+  .mermaid-zoom-container svg {
+    max-width: 94vw;
+    max-height: 72vh;
+  }
+
+  .mermaid-toolbar {
+    bottom: 16px;
+  }
+}

@@ -1,0 +1,39 @@
+/* ========== 中文排版优化 ========== */
+
+:root {
+  --sl-font:
+    'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Source Han Sans SC',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --sl-font-mono:
+    'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', 'Roboto Mono',
+    Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+@media (min-width: 50em) {
+  :root {
+    --sl-text-h1: 2.5rem;
+    --sl-text-h2: 1.75rem;
+    --sl-text-h3: 1.4rem;
+    --sl-text-h4: 1.2rem;
+  }
+}
+
+main {
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 650;
+}
+
+blockquote {
+  border-left: 4px solid var(--sl-color-accent, #6366f1);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--sl-color-gray-3, #64748b);
+}
+
+starlight-card {
+  margin-bottom: 1rem;
+}

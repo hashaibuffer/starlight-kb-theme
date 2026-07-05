@@ -1,0 +1,20 @@
+{
+  "name": "starlight-kb-theme",
+  "version": "1.0.0",
+  "description": "Astro Starlight 知识库主题集成 — Mermaid 图表交互渲染 + KaTeX 公式 + 中文排版优化",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./remark-mermaid": "./src/remark-mermaid.ts",
+    "./styles/*": "./src/styles/*"
+  },
+  "peerDependencies": {
+    "@astrojs/starlight": "^0.34.0",
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "katex": "^0.17.0",
+    "remark-math": "^6.0.0",
+    "rehype-katex": "^7.0.0"
+  }
+}
