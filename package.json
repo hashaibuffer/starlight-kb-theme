@@ -1,8 +1,15 @@
 {
-  "name": "starlight-kb-theme",
+  "name": "@hashaibuffer/starlight-kb-theme",
   "version": "1.0.0",
   "description": "Astro Starlight 知识库主题集成 — Mermaid 图表交互渲染 + KaTeX 公式 + 中文排版优化",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashaibuffer/starlight-kb-theme.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./remark-mermaid": "./src/remark-mermaid.ts",
