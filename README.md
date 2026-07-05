@@ -50,6 +50,9 @@ starlightKbTheme({
 
   // 是否启用 KaTeX（默认 true）
   katex: true,
+
+  // 是否启用侧边栏折叠按钮（默认 false）
+  sidebarToggle: true,
 })
 ```
 

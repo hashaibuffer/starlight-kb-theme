@@ -1,0 +1,45 @@
+/* ========== 侧边栏折叠按钮 ========== */
+
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 50%;
+  left: calc(var(--sl-sidebar-width, 14rem) - 24px);
+  transform: translateY(-50%);
+  width: 28px;
+  height: 48px;
+  border: 1px solid var(--sl-color-hairline);
+  background: color-mix(in srgb, var(--sl-color-bg) 92%, var(--sl-color-gray-5));
+  color: var(--sl-color-gray-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+  font-size: 14px;
+  z-index: 100;
+  opacity: 0.6;
+  transition: left 0.25s ease, opacity 0.15s;
+  line-height: 1;
+  padding: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  opacity: 1;
+  background: color-mix(in srgb, var(--sl-color-gray-5) 40%, transparent);
+}
+
+/* 折叠态：按钮靠到最左边 */
+body.sidebar-collapsed .sidebar-toggle-btn {
+  left: 0;
+}
+
+/* 折叠态：隐藏侧边栏 */
+body.sidebar-collapsed .sidebar-pane {
+  display: none !important;
+}
+
+/* 折叠态：主内容区去掉为侧边栏预留的空隙 */
+body.sidebar-collapsed .main-frame {
+  padding-inline-start: 0 !important;
+}

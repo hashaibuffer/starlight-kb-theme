@@ -16,6 +16,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkMermaid } from './remark-mermaid';
 import { buildMermaidHeadScript } from './mermaid-script';
+import { buildSidebarToggleScript } from './sidebar-script';
 
 export interface StarlightKbThemeOptions {
   /**
@@ -28,6 +29,11 @@ export interface StarlightKbThemeOptions {
    * 启用后会注入 remark-math + rehype-katex + katex.css。
    */
   katex?: boolean;
+  /**
+   * 是否启用侧边栏折叠按钮（默认 false）。
+   * 设为 true 后会在页面左侧添加一个固定按钮，点击可收起/展开侧边栏。
+   */
+  sidebarToggle?: boolean;
 }
 
 const DEFAULT_MERMAID_CDN = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
@@ -94,9 +100,11 @@ export function starlightKbTheme(options: StarlightKbThemeOptions = {}): Starlig
   const {
     mermaidCdnUrl = DEFAULT_MERMAID_CDN,
     katex = true,
+    sidebarToggle = false,
   } = options;
 
   const mermaidScript = buildMermaidHeadScript(mermaidCdnUrl);
+  const sidebarScript = sidebarToggle ? buildSidebarToggleScript() : null;
 
   return {
     name: 'starlight-kb-theme',
@@ -112,15 +120,25 @@ export function starlightKbTheme(options: StarlightKbThemeOptions = {}): Starlig
           newCss.push(katexCssPath);
         }
 
+        const headEntries: any[] = [
+          ...(existingHead as any[]),
+          {
+            tag: 'script',
+            attrs: { type: 'module' },
+            content: mermaidScript,
+          },
+        ];
+
+        if (sidebarScript) {
+          headEntries.push({
+            tag: 'script',
+            attrs: { type: 'module' },
+            content: sidebarScript,
+          });
+        }
+
         updateConfig({
-          head: [
-            ...(existingHead as any[]),
-            {
-              tag: 'script',
-              attrs: { type: 'module' },
-              content: mermaidScript,
-            },
-          ],
+          head: headEntries,
           customCss: newCss,
         });
 
