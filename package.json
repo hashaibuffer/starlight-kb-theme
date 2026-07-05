@@ -1,6 +1,6 @@
 {
   "name": "@hashaibuffer/starlight-kb-theme",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Astro Starlight 知识库主题集成 — Mermaid 图表交互渲染 + KaTeX 公式 + 中文排版优化",
   "type": "module",
   "repository": {
